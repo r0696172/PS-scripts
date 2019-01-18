@@ -26,6 +26,11 @@ Foreach($user in ($allUsers))
     $Name = $user.FirstName + " " + $user.LastName
     $location = Get-ADOrganizationalUnit -Filter "Name -eq '$($user.OU)'"
 
-    New-ADUser `        -SamAccountName $SAM -UserPrincipalName $UPN `        -AccountPassword $password -Enabled $true `        -GivenName $user.FirstName -Surname $user.LastName `        -DisplayName $Name -Name $Name `        -Path $location.DistinguishedName
+    New-ADUser `
+        -SamAccountName $SAM -UserPrincipalName $UPN `
+        -AccountPassword $password -Enabled $true `
+        -GivenName $user.FirstName -Surname $user.LastName `
+        -DisplayName $Name -Name $Name `
+        -Path $location.DistinguishedName
 }
 
